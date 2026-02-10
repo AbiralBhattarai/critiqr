@@ -369,8 +369,16 @@ def search_movies(request):
 def like_movie(request,movie_id:int):
     curr_user = request.user
     movie = get_object_or_404(Movie,id=movie_id)
-    if not Like.objects.filter(user=curr_user,movie=movie):
+    if not Like.objects.filter(user=curr_user,movie=movie).exists():
         Like.objects.create(user=curr_user,movie=movie)
 
     return redirect(request.META.get('HTTP_REFERER'))
 
+@login_required
+def unlike_movie(request,movie_id:int):
+    curr_user = request.user
+    movie = get_object_or_404(Movie,id=movie_id)
+    if Like.objects.filter(user=curr_user,movie=movie).exists():
+        Like.objects.filter(user=curr_user,movie=movie).delete()
+        return redirect(request.META.get('HTTP_REFERER'))
+    return redirect(request.META.get('HTTP_REFERER'))
