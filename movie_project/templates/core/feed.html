@@ -1,0 +1,97 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Your Feed - MovieFlix{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/feed.css' %}">
+{% endblock %}
+{% block content %}
+<div class="feed-container">
+    <div class="feed-header">
+        <h1><i class="fas fa-stream"></i> Your Feed</h1>
+        <p class="feed-subtitle">Reviews from people you follow</p>
+    </div>
+
+    {% if reviews %}
+        <div class="reviews-feed">
+            {% for review in reviews %}
+                <div class="feed-review-card">
+                    <div class="feed-review-header">
+                        <div class="feed-review-user">
+                            <div class="feed-review-avatar">
+                                {% if review.user.profile.avatar_url %}
+                                    <img src="{{ review.user.profile.avatar_url }}" alt="{{ review.user.username }}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                                {% else %}
+                                    {{ review.user.username|first|upper }}
+                                {% endif %}
+                            </div>
+                            <div class="feed-review-userinfo">
+                                <h3>
+                                    <a href="{% url 'view_profile' username=review.user.username %}">
+                                        {{ review.user.username }}
+                                    </a>
+                                </h3>
+                                <div class="feed-review-time">{{ review.created_at|timesince }} ago</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feed-review-movie">
+                        <div class="feed-review-movie-title">
+                            <i class="fas fa-film"></i> 
+                            <a href="{% url 'list_one_movie' movie_id=review.movie.id %}" class="feed-review-movie-link">
+                                {{ review.movie.movie_name }}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="feed-review-rating">
+                        <i class="fas fa-star"></i> {{ review.rating }}/5
+                    </div>
+
+                    <div class="feed-review-content">
+                        {{ review.review_content|linebreaks }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if page_obj.has_other_pages %}
+            <nav aria-label="Page navigation" class="feed-pagination">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">
+                        <i class="fas fa-step-backward"></i> First
+                    </a>
+                    <a href="?page={{ page_obj.previous_page_number }}">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </a>
+                {% endif %}
+
+                <span>
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">
+                        Last <i class="fas fa-step-forward"></i>
+                    </a>
+                {% endif %}
+            </nav>
+        {% endif %}
+    {% else %}
+        <div class="no-reviews">
+            <i class="fas fa-inbox"></i>
+            <h3>Your feed is empty</h3>
+            <p>Follow people to see their reviews here</p>
+            <a href="{% url 'get_all_movies' %}">
+                <i class="fas fa-clapperboard"></i> Browse Movies
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

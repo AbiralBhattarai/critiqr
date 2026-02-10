@@ -1,0 +1,195 @@
+.feed-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.feed-header {
+    margin-bottom: 30px;
+}
+
+.feed-header h1 {
+    color: #8B0000;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.feed-subtitle {
+    color: #aaa;
+    font-size: 1rem;
+}
+
+.reviews-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feed-review-card {
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid #8B0000;
+    border-radius: 10px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.feed-review-card:hover {
+    transform: translateX(5px);
+    border-color: #ff0000;
+    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
+}
+
+.feed-review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.feed-review-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.feed-review-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #8B0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    border: 2px solid #c00000;
+}
+
+.feed-review-userinfo h3 {
+    color: #8B0000;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.feed-review-userinfo a {
+    color: #8B0000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.feed-review-userinfo a:hover {
+    color: #ff0000;
+}
+
+.feed-review-time {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.feed-review-movie {
+    background: rgba(139, 0, 0, 0.1);
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+    border-left: 3px solid #8B0000;
+}
+
+.feed-review-movie-title {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.feed-review-movie-link {
+    color: #8B0000;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.feed-review-movie-link:hover {
+    color: #ff0000;
+}
+
+.feed-review-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffd700;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.feed-review-content {
+    color: #ddd;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+.no-reviews {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid #8B0000;
+    border-radius: 10px;
+}
+
+.no-reviews i {
+    font-size: 4rem;
+    color: #8B0000;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.no-reviews h3 {
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.no-reviews p {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.no-reviews a {
+    display: inline-block;
+    background: #8B0000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.no-reviews a:hover {
+    background: #c00000;
+}
+
+.feed-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.feed-pagination a,
+.feed-pagination span {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #8B0000;
+    color: #8B0000;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.feed-pagination a:hover {
+    background: #8B0000;
+    color: #fff;
+}
+
+.feed-pagination span {
+    background: #8B0000;
+    color: #fff;
+    border-color: #8B0000;
+}

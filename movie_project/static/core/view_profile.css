@@ -1,0 +1,242 @@
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-header {
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid #8B0000;
+    border-radius: 15px;
+    padding: 40px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.profile-avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-avatar-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 15px;
+    border: 3px solid #8B0000;
+    object-fit: cover;
+    margin-bottom: 15px;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.profile-avatar-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-avatar-placeholder {
+    color: #8B0000;
+    font-size: 3rem;
+}
+
+.follow-btn {
+    background: #8B0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-weight: bold;
+}
+
+.follow-btn:hover {
+    background: #c00000;
+    transform: scale(1.05);
+}
+
+.unfollow-btn {
+    background: rgba(139, 0, 0, 0.2);
+    color: #8B0000;
+    border: 2px solid #8B0000;
+}
+
+.unfollow-btn:hover {
+    background: rgba(139, 0, 0, 0.3);
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+.profile-info h1 {
+    color: #8B0000;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: rgba(139, 0, 0, 0.1);
+    border: 1px solid #8B0000;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.stat-number {
+    color: #8B0000;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.stat-label a {
+    color: #8B0000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.stat-label a:hover {
+    color: #ff0000;
+}
+
+.profile-bio {
+    background: rgba(139, 0, 0, 0.1);
+    border: 1px solid #8B0000;
+    border-radius: 10px;
+    padding: 20px;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+.profile-bio h3 {
+    color: #8B0000;
+    margin-bottom: 10px;
+}
+
+.profile-bio-empty {
+    color: #888;
+    font-style: italic;
+}
+
+.section-title {
+    color: #8B0000;
+    font-size: 1.8rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.watchlist-item,
+.review-item {
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid #8B0000;
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.watchlist-item:hover,
+.review-item:hover {
+    border-color: #ff0000;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(139, 0, 0, 0.3);
+}
+
+.watchlist-item h4,
+.review-item h4 {
+    color: #8B0000;
+    margin-bottom: 12px;
+}
+
+.watchlist-item a,
+.review-item a {
+    color: #8B0000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.watchlist-item a:hover,
+.review-item a:hover {
+    color: #ff0000;
+}
+
+.review-rating {
+    color: #ffd700;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.review-content {
+    color: #ddd;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px dashed #8B0000;
+    border-radius: 10px;
+    color: #888;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    color: #8B0000;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .profile-header {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .profile-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .section-container {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-info h1 {
+        font-size: 1.8rem;
+    }
+}

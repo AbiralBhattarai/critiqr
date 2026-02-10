@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1a0000 0%, #330000 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logout-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+}
+
+.logout-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #8B0000;
+    border-radius: 15px;
+    padding: 60px 40px;
+    box-shadow: 0 8px 32px rgba(139, 0, 0, 0.3);
+    text-align: center;
+}
+
+.logout-icon {
+    font-size: 3rem;
+    color: #8B0000;
+    margin-bottom: 20px;
+}
+
+.logout-title {
+    color: #8B0000;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.logout-message {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.logout-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-login,
+.btn-home {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-login {
+    background: linear-gradient(135deg, #8B0000 0%, #c00000 100%);
+    color: #fff;
+}
+
+.btn-login:hover {
+    background: linear-gradient(135deg, #c00000 0%, #ff0000 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 0, 0, 0.5);
+}
+
+.btn-home {
+    background: #555;
+    color: #fff;
+}
+
+.btn-home:hover {
+    background: #777;
+}
+
+.logout-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(139, 0, 0, 0.3);
+    color: #888;
+    font-size: 0.9rem;
+}

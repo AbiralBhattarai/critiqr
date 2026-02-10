@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}{{ action|title }} - {{ username }} - MovieFlix{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/show_follow.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="follow-list-container">
+    <div class="follow-list-header">
+        <h1>{{ username }}'s {{ action|title }}</h1>
+        <h2>{{ follow_data|length }} {{ action|lower }}</h2>
+    </div>
+
+    {% if follow_data %}
+        <div class="follow-list">
+            {% for obj in follow_data %}
+                <div class="follow-item">
+                    <div class="follow-item-avatar">
+                        {% if obj.profile.avatar_url %}
+                            <img src="{{ obj.profile.avatar_url }}" alt="{{ obj.username }}">
+                        {% else %}
+                            {{ obj.username|first|upper }}
+                        {% endif %}
+                    </div>
+                    <div class="follow-item-username">
+                        <a href="{% url 'view_profile' username=obj.username %}">
+                            {{ obj.username }}
+                        </a>
+                    </div>
+                    <a href="{% url 'view_profile' username=obj.username %}" class="follow-item-link">
+                        <i class="fas fa-user"></i> View Profile
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <i class="fas fa-users"></i>
+            <p>No {{ action|lower }} yet</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

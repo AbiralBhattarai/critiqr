@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Edit Review - MovieFlix{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/edit_review.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="review-form-container">
+    <button onclick="history.back()" class="btn-small" style="margin-bottom: 20px;">
+        <i class="fas fa-arrow-left"></i> Back
+    </button>
+
+    <h2><i class="fas fa-edit"></i> Edit Your Review</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="error-messages">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="{{ form.rating.id_for_label }}">
+                <i class="fas fa-star" style="color: #ffd700;"></i> Rating (1-5)
+            </label>
+            {{ form.rating }}
+            {% if form.rating.errors %}
+                <div class="error-messages">{{ form.rating.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.review_content.id_for_label }}">
+                <i class="fas fa-comment"></i> Your Review
+            </label>
+            {{ form.review_content }}
+            {% if form.review_content.errors %}
+                <div class="error-messages">{{ form.review_content.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-submit">
+                <i class="fas fa-save"></i> Update Review
+            </button>
+            <button type="button" class="btn-cancel" onclick="history.back();">
+                <i class="fas fa-times"></i> Cancel
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}{{ username }}'s Profile - MovieFlix{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/view_profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-avatar-section">
+            <div class="profile-avatar-image">
+                {% if avatar %}
+                    <img src="{{ avatar.url }}" alt="{{ username }}'s avatar">
+                {% else %}
+                    <div class="profile-avatar-placeholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                {% endif %}
+            </div>
+            {% if is_following %}
+                <a href='{% url "unfollow_user" username=username %}' class="follow-btn unfollow-btn">
+                    <i class="fas fa-check"></i> Following
+                </a>
+            {% else %}
+                <a href="{% url 'follow_user' username=username %}" class="follow-btn">
+                    <i class="fas fa-user-plus"></i> Follow
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="profile-info">
+            <h1>{{ username }}</h1>
+
+            <div class="profile-stats">
+                <div class="stat-card">
+                    <div class="stat-number">{{ followers|length }}</div>
+                    <div class="stat-label">
+                        <a href="{% url 'show_follow' username=username action='followers' %}">
+                            <i class="fas fa-users"></i> Followers
+                        </a>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{ following|length }}</div>
+                    <div class="stat-label">
+                        <a href="{% url 'show_follow' username=username action='following' %}">
+                            <i class="fas fa-user-friends"></i> Following
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-bio">
+                <h3><i class="fas fa-quote-left"></i> About</h3>
+                {% if bio %}
+                    <p>{{ bio }}</p>
+                {% else %}
+                    <p class="profile-bio-empty">No bio yet</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">
+        <i class="fas fa-bookmark"></i> Watchlist
+    </h2>
+    {% if watch_list %}
+        <div class="section-container">
+            {% for item in watch_list %}
+                <div class="watchlist-item">
+                    <h4>{{ item.movie.movie_name }}</h4>
+                    <p style="color: #aaa; margin-bottom: 12px;">
+                        <i class="fas fa-clock"></i> {{ item.movie.length }} min • {{ item.movie.genre }}
+                    </p>
+                    <a href="{% url 'list_one_movie' movie_id=item.movie.id %}">
+                        <i class="fas fa-eye"></i> View Movie
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <i class="fas fa-inbox"></i>
+            <p>No movies in watchlist</p>
+        </div>
+    {% endif %}
+
+    <h2 class="section-title">
+        <i class="fas fa-star"></i> Reviews
+    </h2>
+    {% if reviews %}
+        <div class="section-container">
+            {% for review in reviews %}
+                <div class="review-item">
+                    <h4>{{ review.movie.movie_name }}</h4>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i> {{ review.rating }}/5
+                    </div>
+                    <div class="review-content">
+                        {{ review.review_content|truncatewords:20 }}
+                    </div>
+                    <a href="{% url 'list_one_movie' movie_id=review.movie.id %}">
+                        <i class="fas fa-eye"></i> View Movie
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <i class="fas fa-pen"></i>
+            <p>No reviews yet</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+</html>

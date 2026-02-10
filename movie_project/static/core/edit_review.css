@@ -1,0 +1,109 @@
+.review-form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid #8B0000;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.review-form-container h2 {
+    color: #8B0000;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    color: #ccc;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #8B0000;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #888;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #c00000;
+    outline: none;
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.btn-submit {
+    flex: 1;
+    background: #8B0000;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: #c00000;
+}
+
+.btn-cancel {
+    flex: 1;
+    background: #555;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background: #777;
+}
+
+.error-messages {
+    background: rgba(200, 0, 0, 0.2);
+    border: 1px solid #8B0000;
+    color: #ff6b6b;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.error-messages ul {
+    margin: 0;
+    padding-left: 20px;
+}

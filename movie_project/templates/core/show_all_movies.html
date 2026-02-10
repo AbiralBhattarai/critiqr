@@ -1,0 +1,93 @@
+{% extends 'core/base.html' %}
+
+{% block title %}All Movies - MovieFlix{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <h2 class="mb-4 all-movies-title">
+        <i class="fas fa-clapperboard"></i> All Movies
+    </h2>
+
+    <div class="movie-grid">
+        {% for movie in movies %}
+            <div class="movie-card">
+                <div class="movie-poster">
+                    {% if movie.poster_url %}
+                        <img src="{{ movie.poster_url }}" alt="{{ movie.movie_name }}">
+                    {% else %}
+                        <div class="no-poster-placeholder">
+                            <i class="fas fa-film"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="movie-info">
+                    <div class="movie-title">{{ movie.movie_name }}</div>
+                    {% if movie.avg_rating %}
+                        <div class="movie-rating">
+                            <i class="fas fa-star"></i> {{ movie.avg_rating|floatformat:1 }}/5 ({{ movie.review_count }})
+                        </div>
+                    {% else %}
+                        <div class="movie-rating">
+                            <i class="fas fa-star-half-alt"></i> No ratings yet
+                        </div>
+                    {% endif %}
+                    <div class="movie-genre">{{ movie.genre }} • {{ movie.length }} min</div>
+                    <div class="movie-actions">
+                        <a href="{% url 'list_one_movie' movie_id=movie.id %}" class="btn-small" style="flex: 2;">
+                            <i class="fas fa-eye"></i> View
+                        </a>
+                        {% if movie.id in watchlist %}
+                            <form method="POST" action="{% url 'remove_from_watchlist' movie_id=movie.id %}" class="watchlist-form">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-small">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </form>
+                        {% else %}
+                            <form method="POST" action="{% url 'add_to_watchlist' movie_id=movie.id %}" class="watchlist-form">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-small">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="no-movies-empty">
+                <i class="fas fa-inbox"></i>
+                <h3>No movies available</h3>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
+        <nav aria-label="Page navigation" class="d-flex justify-content-center">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">First</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item disabled">
+                    <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                </li>
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+</div>
+{% endblock %}
