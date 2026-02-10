@@ -363,3 +363,14 @@ def search_movies(request):
         'search_query': query
     }
     return render(request, 'core/search_results.html', context=context)
+
+
+@login_required
+def like_movie(request,movie_id:int):
+    curr_user = request.user
+    movie = get_object_or_404(Movie,id=movie_id)
+    if not Like.objects.filter(user=curr_user,movie=movie):
+        Like.objects.create(user=curr_user,movie=movie)
+
+    return redirect(request.META.get('HTTP_REFERER'))
+
