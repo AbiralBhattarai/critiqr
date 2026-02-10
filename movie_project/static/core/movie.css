@@ -9,17 +9,17 @@
     grid-template-columns: 250px 1fr;
     gap: 40px;
     margin-bottom: 40px;
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid #8B0000;
-    border-radius: 10px;
+    background: #FFFFFF;
+    border: 1px solid #6B8E23;
+    border-radius: 0;
     padding: 30px;
 }
 
 .movie-header-image {
     width: 250px;
-    border-radius: 10px;
+    border-radius: 0;
     overflow: hidden;
-    border: 2px solid #8B0000;
+    border: 1px solid #6B8E23;
 }
 
 .movie-header-image img {
@@ -29,7 +29,7 @@
 }
 
 .movie-header-info h1 {
-    color: #8B0000;
+    color: #1a1a1a;
     font-size: 2.5rem;
     margin-bottom: 15px;
 }
@@ -42,20 +42,20 @@
 }
 
 .meta-item {
-    background: rgba(139, 0, 0, 0.1);
+    background: rgba(107, 142, 35, 0.1);
     padding: 15px;
     border-radius: 8px;
-    border-left: 3px solid #8B0000;
+    border-left: 3px solid #6B8E23;
 }
 
 .meta-label {
-    color: #aaa;
+    color: #999999;
     font-size: 0.85rem;
     margin-bottom: 5px;
 }
 
 .meta-value {
-    color: #fff;
+    color: #1a1a1a;
     font-weight: bold;
 }
 
@@ -72,8 +72,8 @@
 
 .watchlist-btn {
     display: inline-block;
-    background: #8B0000;
-    color: #fff;
+    background: #1a1a1a;
+    color: #FFFFFF;
     padding: 12px 25px;
     border-radius: 8px;
     text-decoration: none;
@@ -84,7 +84,8 @@
 }
 
 .watchlist-btn:hover {
-    background: #c00000;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    background: #333333;
     transform: scale(1.05);
 }
 
@@ -93,15 +94,15 @@
 }
 
 .reviews-title {
-    color: #8B0000;
+    color: #1a1a1a;
     font-size: 1.8rem;
     margin-bottom: 20px;
 }
 
 .review-card {
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid #8B0000;
-    border-radius: 10px;
+    background: #FFFFFF;
+    border: 1px solid #6B8E23;
+    border-radius: 0;
     padding: 20px;
     margin-bottom: 15px;
 }
@@ -114,13 +115,14 @@
 }
 
 .review-user {
-    color: #8B0000;
+    color: #1a1a1a;
     font-weight: bold;
     text-decoration: none;
 }
 
 .review-user:hover {
-    color: #ff0000;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    color: #666666;
 }
 
 .review-rating {
@@ -128,7 +130,7 @@
 }
 
 .review-content {
-    color: #ddd;
+    color: #808080;
     line-height: 1.6;
     margin-bottom: 15px;
 }
@@ -150,8 +152,8 @@
 }
 
 .review-action-btn {
-    background: #8B0000;
-    color: #fff;
+    background: #1a1a1a;
+    color: #FFFFFF;
     padding: 6px 12px;
     border-radius: 5px;
     text-decoration: none;
@@ -162,16 +164,17 @@
 }
 
 .review-action-btn:hover {
-    background: #c00000;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    background: #333333;
 }
 
 .no-reviews {
     text-align: center;
     padding: 40px 20px;
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid #8B0000;
-    border-radius: 10px;
-    color: #aaa;
+    background: #FFFFFF;
+    border: 1px solid #6B8E23;
+    border-radius: 0;
+    color: #5f5f5f;
 }
 
 @media (max-width: 768px) {

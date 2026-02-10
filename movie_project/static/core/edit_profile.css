@@ -1,14 +1,14 @@
 .edit-profile-container {
     max-width: 600px;
     margin: 40px auto;
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid #8B0000;
-    border-radius: 10px;
+    background: #FFFFFF;
+    border: 1px solid #6B8E23;
+    border-radius: 0;
     padding: 30px;
 }
 
 .edit-profile-container h2 {
-    color: #8B0000;
+    color: #6B8E23;
     margin-bottom: 30px;
     text-align: center;
 }
@@ -18,7 +18,7 @@
 }
 
 .form-group label {
-    color: #ccc;
+    color: #666666;
     font-weight: 500;
     margin-bottom: 10px;
     display: block;
@@ -28,8 +28,8 @@
 .form-group textarea {
     width: 100%;
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid #8B0000;
-    color: #fff;
+    border: 1px solid #6B8E23;
+    color: #1a1a1a;
     padding: 12px;
     border-radius: 8px;
     font-family: inherit;
@@ -43,9 +43,9 @@
 .form-group input:focus,
 .form-group textarea:focus {
     background: rgba(255, 255, 255, 0.15);
-    border-color: #c00000;
+    border-color: #7BA428;
     outline: none;
-    box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(107, 142, 35, 0.5);
 }
 
 .form-group textarea {
@@ -75,26 +75,30 @@
 }
 
 .btn-submit {
-    background: #8B0000;
-    color: #fff;
+    background: #1a1a1a;
+    color: #FFFFFF;
 }
 
 .btn-submit:hover {
-    background: #c00000;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    background: #333333;
 }
 
 .btn-cancel {
-    background: #555;
-    color: #fff;
+    background: #ffffff;
+    color: #1a1a1a;
+    border-color: #7BA428;
+    border: solid;
 }
 
 .btn-cancel:hover {
-    background: #777;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    background: #7BA428;
 }
 
 .error-messages {
     background: rgba(200, 0, 0, 0.2);
-    border: 1px solid #8B0000;
+    border: 1px solid #6B8E23;
     color: #ff6b6b;
     padding: 12px;
     border-radius: 8px;

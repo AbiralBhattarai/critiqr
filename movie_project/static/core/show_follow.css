@@ -7,35 +7,31 @@
 .follow-list-header {
     margin-bottom: 30px;
     text-align: center;
-    background: linear-gradient(180deg, rgba(139, 0, 0, 0.2) 0%, rgba(139, 0, 0, 0.05) 100%);
+    background: #FFFFFF;
     padding: 30px 20px;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-radius: 0;
+    border-bottom: 1px solid #e8e8e8;
 }
 
 .follow-list-header h1 {
-    color: #fff;
+    color: #1a1a1a;
     font-size: 2.8rem;
     margin-bottom: 15px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    background: linear-gradient(135deg, #ff0000, #8B0000);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-weight: 600;
+    letter-spacing: 0;
 }
 
 .follow-list-header h2 {
-    color: #fff;
-    font-size: 1.3rem;
-    font-weight: 600;
-    background: linear-gradient(135deg, #ff0000 0%, #8B0000 100%);
+    color: #666666;
+    font-size: 1rem;
+    font-weight: 400;
+    background: transparent;
     display: inline-block;
-    padding: 12px 28px;
-    border-radius: 30px;
-    margin-top: 15px;
-    letter-spacing: 0.5px;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4), 0 4px 15px rgba(255, 0, 0, 0.3);
+    padding: 0;
+    border-radius: 0;
+    margin-top: 10px;
+    letter-spacing: 0;
+    box-shadow: none;
 }
 
 @media (max-width: 768px) {
@@ -75,32 +71,33 @@
 }
 
 .follow-item {
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid #8B0000;
-    border-radius: 10px;
+    background: #FFFFFF;
+    border: 1px solid #e8e8e8;
+    border-radius: 0;
     padding: 20px;
     text-align: center;
     transition: all 0.3s ease;
 }
 
 .follow-item:hover {
-    border-color: #ff0000;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    border-color: #8FBC2E;
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(139, 0, 0, 0.3);
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
 }
 
 .follow-item-avatar {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background: #8B0000;
+    background: #1a1a1a;
+    color: #FFFFFF;
     margin: 0 auto 15px;
-    border: 2px solid #c00000;
+    border: 1px solid #7BA428;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    color: #fff;
     overflow: hidden;
 }
 
@@ -111,26 +108,27 @@
 }
 
 .follow-item-username {
-    color: #8B0000;
+    color: #1a1a1a;
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .follow-item-username a {
-    color: #8B0000;
+    color: #1a1a1a;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .follow-item-username a:hover {
-    color: #ff0000;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    color: #8FBC2E;
 }
 
 .follow-item-link {
     display: inline-block;
-    background: #8B0000;
-    color: #fff;
+    background: #1a1a1a;
+    color: #FFFFFF;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -139,24 +137,25 @@
 }
 
 .follow-item-link:hover {
-    background: #c00000;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    background: #333333;
 }
 
 .empty-state {
     text-align: center;
     padding: 60px 20px;
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px dashed #8B0000;
-    border-radius: 10px;
+    background: #FFFFFF;
+    border: 1px dashed #D4C5E8;
+    border-radius: 0;
 }
 
 .empty-state i {
     font-size: 3rem;
-    color: #8B0000;
+    color: #1a1a1a;
     margin-bottom: 15px;
     opacity: 0.5;
 }
 
 .empty-state p {
-    color: #aaa;
+    color: #999999;
 }

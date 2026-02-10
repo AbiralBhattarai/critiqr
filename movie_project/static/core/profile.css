@@ -5,9 +5,9 @@
 }
 
 .profile-header {
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid #8B0000;
-    border-radius: 15px;
+    background: #FFFFFF;
+    border: 1px solid #6B8E23;
+    border-radius: 0;
     padding: 40px;
     margin-bottom: 40px;
     display: grid;
@@ -25,10 +25,10 @@
 .profile-avatar-image {
     width: 180px;
     height: 180px;
-    border-radius: 15px;
-    border: 3px solid #8B0000;
+    border-radius: 0;
+    border: 3px solid #6B8E23;
     margin-bottom: 15px;
-    background: #1a1a1a;
+    background: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,17 +39,17 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: 0;
 }
 
 .profile-avatar-placeholder {
-    color: #8B0000;
+    color: #1a1a1a;
     font-size: 3rem;
 }
 
 .profile-edit-btn {
-    background: #8B0000;
-    color: #fff;
+    background: #1a1a1a;
+    color: #FFFFFF;
     border: none;
     padding: 10px 20px;
     border-radius: 8px;
@@ -62,12 +62,13 @@
 }
 
 .profile-edit-btn:hover {
-    background: #c00000;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    background: #333333;
     transform: scale(1.05);
 }
 
 .profile-info h1 {
-    color: #8B0000;
+    color: #1a1a1a;
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
@@ -80,56 +81,57 @@
 }
 
 .stat-card {
-    background: rgba(139, 0, 0, 0.1);
-    border: 1px solid #8B0000;
-    border-radius: 10px;
+    background: rgba(107, 142, 35, 0.1);
+    border: 1px solid #6B8E23;
+    border-radius: 0;
     padding: 20px;
     text-align: center;
 }
 
 .stat-number {
-    color: #8B0000;
+    color: #1a1a1a;
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
 .stat-label {
-    color: #aaa;
+    color: #333333;
     font-size: 0.9rem;
 }
 
 .stat-label a {
-    color: #8B0000;
+    color: #1a1a1a;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .stat-label a:hover {
-    color: #ff0000;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    color: #666666;
 }
 
 .profile-bio {
-    background: rgba(139, 0, 0, 0.1);
-    border: 1px solid #8B0000;
-    border-radius: 10px;
+    background: rgba(107, 142, 35, 0.1);
+    border: 1px solid #6B8E23;
+    border-radius: 0;
     padding: 20px;
-    color: #ddd;
+    color: #666666;
     line-height: 1.6;
 }
 
 .profile-bio h3 {
-    color: #8B0000;
+    color: #1a1a1a;
     margin-bottom: 10px;
 }
 
 .profile-bio-empty {
-    color: #888;
+    color: #4a4a4a;
     font-style: italic;
 }
 
 .section-title {
-    color: #8B0000;
+    color: #1a1a1a;
     font-size: 1.8rem;
     margin-top: 40px;
     margin-bottom: 20px;
@@ -147,29 +149,33 @@
 
 .watchlist-item,
 .review-item {
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid #8B0000;
-    border-radius: 10px;
+    background: #FFFFFF;
+    border: 1px solid #6B8E23;
+    border-radius: 0;
     padding: 20px;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .watchlist-item:hover,
 .review-item:hover {
-    border-color: #ff0000;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    border-color: #666666;
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(139, 0, 0, 0.3);
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
 }
 
 .watchlist-item h4,
 .review-item h4 {
-    color: #8B0000;
+    color: #1a1a1a;
     margin-bottom: 12px;
 }
 
 .watchlist-item a,
 .review-item a {
-    color: #8B0000;
+    color: #1a1a1a;
     text-decoration: none;
     transition: color 0.3s ease;
     font-size: 0.9rem;
@@ -177,7 +183,7 @@
 
 .watchlist-item a:hover,
 .review-item a:hover {
-    color: #ff0000;
+    color: #6B8E23;
 }
 
 .review-rating {
@@ -187,7 +193,7 @@
 }
 
 .review-content {
-    color: #ddd;
+    color: #666666;
     font-size: 0.9rem;
     margin-bottom: 12px;
     line-height: 1.5;
@@ -199,35 +205,38 @@
 }
 
 .remove-btn {
-    background: rgba(139, 0, 0, 0.3);
-    color: #ff6b6b;
-    border: 1px solid #ff6b6b;
-    padding: 6px 12px;
-    border-radius: 6px;
+    background: #FFFFFF;
+    color: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    padding: 6px 10px;
+    border-radius: 0;
     cursor: pointer;
     font-size: 0.85rem;
     transition: all 0.3s ease;
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    min-height: 32px;
 }
 
 .remove-btn:hover {
-    background: #ff6b6b;
-    color: #fff;
-    border-color: #ff6b6b;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
 }
 
 .empty-state {
     text-align: center;
     padding: 40px 20px;
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px dashed #8B0000;
-    border-radius: 10px;
-    color: #888;
+    background: #FFFFFF;
+    border: 1px dashed #D4C5E8;
+    border-radius: 0;
+    color: #4a4a4a;
 }
 
 .empty-state i {
     font-size: 2.5rem;
-    color: #8B0000;
+    color: #1a1a1a;
     margin-bottom: 10px;
     opacity: 0.5;
 }

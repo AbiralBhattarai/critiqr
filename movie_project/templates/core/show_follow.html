@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}{{ action|title }} - {{ username }} - MovieFlix{% endblock %}
+{% block title %}{{ action|title }} - {{ username }} - Critiqr{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'core/show_follow.css' %}">
@@ -20,7 +20,7 @@
                 <div class="follow-item">
                     <div class="follow-item-avatar">
                         {% if obj.profile.avatar_url %}
-                            <img src="{{ obj.profile.avatar_url }}" alt="{{ obj.username }}">
+                            <img src="{{ obj.profile.avatar_url.url }}" alt="{{ obj.username }}">
                         {% else %}
                             {{ obj.username|first|upper }}
                         {% endif %}

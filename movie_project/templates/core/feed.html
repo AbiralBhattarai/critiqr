@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}Your Feed - MovieFlix{% endblock %}
+{% block title %}Your Feed - Critiqr{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'core/feed.css' %}">
@@ -21,7 +21,7 @@
                         <div class="feed-review-user">
                             <div class="feed-review-avatar">
                                 {% if review.user.profile.avatar_url %}
-                                    <img src="{{ review.user.profile.avatar_url }}" alt="{{ review.user.username }}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                                    <img src="{{ review.user.profile.avatar_url.url }}" alt="{{ review.user.username }}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
                                 {% else %}
                                     {{ review.user.username|first|upper }}
                                 {% endif %}

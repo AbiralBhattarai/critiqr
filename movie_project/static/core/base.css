@@ -5,31 +5,31 @@
 }
 
 body {
-    background: #0f0f0f;
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #FFFFFF;
+    color: #1a1a1a;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Navbar Styling */
 .navbar {
-    background: linear-gradient(180deg, #1a0000 0%, rgba(26, 0, 0, 0.8) 100%);
-    border-bottom: 2px solid #8B0000;
+    background: #FFFFFF;
+    border-bottom: 1px solid #e8e8e8;
     padding: 10px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-brand {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #8B0000 !important;
+    color: #1a1a1a !important;
     letter-spacing: 2px;
 }
 
 .navbar-brand:hover {
-    color: #ff0000 !important;
+    color: #6B8E23 !important;
 }
 
 .search-container {
@@ -39,40 +39,39 @@ body {
 }
 
 .search-input {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid #8B0000;
-    color: #fff;
-    border-radius: 25px;
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    color: #1a1a1a;
+    border-radius: 4px;
     padding: 8px 15px;
     width: 100%;
     font-size: 0.95rem;
 }
 
 .search-input::placeholder {
-    color: #aaa;
+    color: #999999;
 }
 
 .search-input:focus {
     background: rgba(255, 255, 255, 0.15);
-    border-color: #c00000;
+    border-color: #7BA428;
     outline: none;
-    box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(107, 142, 35, 0.5);
 }
 
 .search-btn {
-    background: #8B0000;
+    background: #1a1a1a;
     border: none;
-    color: #fff;
+    color: #FFFFFF;
     margin-left: 8px;
-    border-radius: 25px;
+    border-radius: 4px;
     padding: 8px 20px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .search-btn:hover {
-    background: #c00000;
-    transform: scale(1.05);
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
 }
 
 .user-profile {
@@ -85,21 +84,21 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #8B0000;
+    background: #1a1a1a;
+    color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #c00000;
+    border: 1px solid #7BA428;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    color: #fff;
     font-weight: bold;
 }
 
 .user-avatar:hover {
-    background: #c00000;
-    box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
 }
 
 .user-avatar img {
@@ -110,20 +109,20 @@ body {
 }
 
 .username-link {
-    color: #8B0000;
+    color: #6B8E23;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .username-link:hover {
-    color: #ff0000;
+    color: #8FBC2E;
 }
 
 .logout-btn {
-    background: #8B0000;
+    background: #1a1a1a;
+    color: #FFFFFF;
     border: none;
-    color: #fff;
     padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -132,7 +131,7 @@ body {
 }
 
 .logout-btn:hover {
-    background: #c00000;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
 }
 
 /* Main Content */
@@ -142,8 +141,8 @@ body {
 
 /* Footer */
 footer {
-    background: linear-gradient(180deg, rgba(26, 0, 0, 0.8) 0%, #1a0000 100%);
-    border-top: 1px solid #8B0000;
+    background: linear-gradient(180deg, rgba(26, 0, 0, 0.8) 0%, #2a1a3a 100%);
+    border-top: 1px solid #6B8E23;
     padding: 20px;
     text-align: center;
     color: #888;
@@ -152,8 +151,8 @@ footer {
 
 /* Common Button Styles */
 .btn-small {
-    background: #8B0000;
-    color: #fff;
+    background: #1a1a1a;
+    color: #FFFFFF;
     border: none;
     padding: 8px 15px;
     border-radius: 5px;
@@ -167,8 +166,7 @@ footer {
 }
 
 .btn-small:hover {
-    background: #c00000;
-    color: #fff;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
 }
 
 /* Movie Grid */
@@ -180,24 +178,25 @@ footer {
 }
 
 .movie-card {
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid #8B0000;
-    border-radius: 10px;
+    background: #FFFFFF;
+    border: 1px solid #6B8E23;
+    border-radius: 0;
     overflow: hidden;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .movie-card:hover {
-    border-color: #ff0000;
-    box-shadow: 0 10px 25px rgba(139, 0, 0, 0.3);
-    transform: translateY(-5px);
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    border-color: #8FBC2E;
 }
 
 .movie-poster {
     width: 100%;
     height: 280px;
     overflow: hidden;
-    background: #1a0000;
+    background: #2a1a3a;
 }
 
 .movie-poster img {
@@ -208,15 +207,17 @@ footer {
 }
 
 .movie-card:hover .movie-poster img {
-    transform: scale(1.05);
 }
 
 .movie-info {
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .movie-title {
-    color: #fff;
+    color: #1a1a1a;
     font-weight: bold;
     margin-bottom: 8px;
     font-size: 0.95rem;
@@ -229,7 +230,7 @@ footer {
 }
 
 .movie-genre {
-    color: #aaa;
+    color: #4a4a4a;
     font-size: 0.8rem;
     margin-bottom: 12px;
 }
@@ -237,6 +238,7 @@ footer {
 .movie-actions {
     display: flex;
     gap: 8px;
+    margin-top: auto;
 }
 
 /* Pagination */
@@ -246,19 +248,20 @@ footer {
 
 .page-link {
     background: transparent;
-    border: 1px solid #8B0000;
-    color: #8B0000;
+    border: 1px solid #6B8E23;
+    color: #6B8E23;
     transition: all 0.3s ease;
 }
 
 .page-link:hover {
-    background: #8B0000;
-    color: #fff;
+    box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.3);
+    color: #FFFFFF;
 }
 
 .page-item.active .page-link {
-    background: #8B0000;
-    border-color: #8B0000;
+    background: #1a1a1a;
+    color: #FFFFFF;
+    border-color: #6B8E23;
 }
 
 @media (max-width: 768px) {
@@ -274,7 +277,7 @@ footer {
 
 /* All Movies Page */
 .all-movies-title {
-    color: #8B0000;
+    color: #6B8E23;
     margin-left: 20px;
     margin-top: 20px;
 }
@@ -285,12 +288,12 @@ footer {
     justify-content: center;
     width: 100%;
     height: 100%;
-    background: #1a0000;
+    background: #2a1a3a;
 }
 
 .no-poster-placeholder i {
     font-size: 3rem;
-    color: #8B0000;
+    color: #6B8E23;
 }
 
 .no-movies-empty {
@@ -301,13 +304,13 @@ footer {
 
 .no-movies-empty i {
     font-size: 4rem;
-    color: #8B0000;
+    color: #6B8E23;
     margin-bottom: 20px;
     opacity: 0.5;
 }
 
 .no-movies-empty h3 {
-    color: #aaa;
+    color: #999999;
 }
 
 .watchlist-form {
