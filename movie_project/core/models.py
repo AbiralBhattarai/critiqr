@@ -84,7 +84,7 @@ class WatchList(models.Model):
 class Like(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='likes')
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='liked_by')
-    
+    created_at = models.DateTimeField(auto_now=True)
     class Meta:
         unique_together = ('user', 'movie')
 
@@ -95,7 +95,7 @@ class Like(models.Model):
 class Watched(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='watched_movies')
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='watched_by')
-    
+    created_at = models.DateTimeField(auto_now=True)
     class Meta:
         unique_together = ('user', 'movie')
 

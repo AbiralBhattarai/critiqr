@@ -57,28 +57,53 @@
                 {{ movie.movie_description }}
             </div>
 
-            <!-- Watchlist Button -->
-            {% if user.is_authenticated %}
-                {% if movie.id in watchlist %}
-                    <form method="POST" action="{% url 'remove_from_watchlist' movie_id=movie.id %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="watchlist-btn">
-                            <i class="fas fa-check"></i> Remove from Watchlist
-                        </button>
-                    </form>
+            <!-- Action Buttons -->
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+                <!-- Watchlist Button -->
+                {% if user.is_authenticated %}
+                    {% if movie.id in watchlist %}
+                        <form method="POST" action="{% url 'remove_from_watchlist' movie_id=movie.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="watchlist-btn">
+                                <i class="fas fa-check"></i> Remove from Watchlist
+                            </button>
+                        </form>
+                    {% else %}
+                        <form method="POST" action="{% url 'add_to_watchlist' movie_id=movie.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="watchlist-btn">
+                                <i class="fas fa-plus"></i> Add to Watchlist
+                            </button>
+                        </form>
+                    {% endif %}
+
+                    <!-- Like Button -->
+                    {% if liked %}
+                        <a href="{% url 'unlike' movie_id=movie.id %}" class="watchlist-btn" style="background: #ff6b6b; color: white;">
+                            <i class="fas fa-heart"></i> Liked
+                        </a>
+                    {% else %}
+                        <a href="{% url 'like' movie_id=movie.id %}" class="watchlist-btn">
+                            <i class="far fa-heart"></i> Like
+                        </a>
+                    {% endif %}
+
+                    <!-- Watched Button -->
+                    {% if watched %}
+                        <a href="{% url 'unwatched' movie_id=movie.id %}" class="watchlist-btn" style="background: #6B8E23; color: white;">
+                            <i class="fas fa-check-circle"></i> Watched
+                        </a>
+                    {% else %}
+                        <a href="{% url 'watched' movie_id=movie.id %}" class="watchlist-btn">
+                            <i class="far fa-circle"></i> Mark as Watched
+                        </a>
+                    {% endif %}
                 {% else %}
-                    <form method="POST" action="{% url 'add_to_watchlist' movie_id=movie.id %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="watchlist-btn">
-                            <i class="fas fa-plus"></i> Add to Watchlist
-                        </button>
-                    </form>
+                    <a href="{% url 'account_login' %}" class="watchlist-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login to interact
+                    </a>
                 {% endif %}
-            {% else %}
-                <a href="{% url 'account_login' %}" class="watchlist-btn">
-                    <i class="fas fa-sign-in-alt"></i> Login to add to Watchlist
-                </a>
-            {% endif %}
+            </div>
         </div>
     </div>
 

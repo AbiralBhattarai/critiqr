@@ -31,6 +31,8 @@ def view_profile(request,username:str):
     avatar = curr_user.profile.avatar_url if hasattr(curr_user, 'profile') else None
     bio = curr_user.profile.bio if hasattr(curr_user, 'profile') else "bio"
     watch_list = WatchList.objects.filter(user=curr_user)
+    watched = Watched.objects.filter(user=curr_user)
+    liked = Like.objects.filter(user=curr_user)
     reviews = curr_user.reviews.all()
     is_following = Follower.objects.filter(
         follower = request.user,
@@ -44,7 +46,9 @@ def view_profile(request,username:str):
         'bio': bio,
         'watch_list': watch_list,
         'reviews': reviews,
-        'is_following':is_following
+        'is_following':is_following,
+        'liked':liked,
+        'watched':watched
     }
     return render(request,'core/view_profile.html',context=context)
 
@@ -65,6 +69,8 @@ def profile(request):
     avatar = curr_user.profile.avatar_url if hasattr(curr_user, 'profile') else None
     bio = curr_user.profile.bio if hasattr(curr_user, 'profile') else "bio"
     watch_list = WatchList.objects.filter(user=curr_user)
+    watched = Watched.objects.filter(user=curr_user)
+    liked = Like.objects.filter(user=curr_user)
     reviews = curr_user.reviews.all()
     
     context = {
@@ -74,6 +80,8 @@ def profile(request):
         'avatar': avatar,
         'bio': bio,
         'watch_list': watch_list,
+        'watched': watched,
+        'liked': liked,
         'reviews': reviews
     }
     return render(request, 'core/profile.html', context=context)
@@ -199,9 +207,13 @@ def list_follow(request, username: str, action: str):
 
 def list_movies(request):
     watchlist = []
+    liked_movies = []
+    watched_movies = []
     if request.user.is_authenticated:
-        User = request.user
-        watchlist = WatchList.objects.filter(user=User).values_list('movie_id', flat=True)
+        user = request.user
+        watchlist = WatchList.objects.filter(user=user).values_list('movie_id', flat=True)
+        liked_movies = Like.objects.filter(user=user).values_list('movie_id', flat=True)
+        watched_movies = Watched.objects.filter(user=user).values_list('movie_id', flat=True)
     
     data = Movie.objects.filter(poster_url__isnull=False).exclude(poster_url='').annotate(
         avg_rating=Avg('reviews__rating'),
@@ -212,7 +224,9 @@ def list_movies(request):
     context = {
         'page_obj':page_obj,
         'movies':page_obj.object_list,
-        'watchlist':watchlist
+        'watchlist':watchlist,
+        'liked_movies': liked_movies,
+        'watched_movies': watched_movies,
     }
     return render(request,'core/show_all_movies.html',context=context)
 
@@ -230,14 +244,20 @@ def list_one_movie(request, movie_id: int):
     page_obj = paginator.get_page(page_number)
     
     watchlist = []
+    liked = False
+    watched = False
     if request.user.is_authenticated:
         watchlist = WatchList.objects.filter(user=request.user).values_list('movie_id', flat=True)
+        liked = Like.objects.filter(user=request.user, movie=movie).exists()
+        watched = Watched.objects.filter(user=request.user, movie=movie).exists()
     
     context = {
         'movie': movie,
         'page_obj': page_obj,
         'reviews': page_obj.object_list,
         'watchlist': watchlist,
+        'liked': liked,
+        'watched': watched,
     }
     return render(request, 'core/movie.html', context=context)
 
@@ -274,6 +294,8 @@ def feed(request):
         user__in=following_users
     ).order_by('?')
     
+    likes = Like.objects.filter(user__in=following_users).order_by('?')
+
     paginator = Paginator(reviews, 30)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -342,8 +364,10 @@ def edit_review(request, review_id: int):
 def search_movies(request):
     query = request.GET.get('q', '')
     watchlist = []
+    liked_movies = []
     if request.user.is_authenticated:
         watchlist = WatchList.objects.filter(user=request.user).values_list('movie_id', flat=True)
+        liked_movies = Like.objects.filter(user=request.user).values_list('movie_id', flat=True)
     if query:
         movies_list = Movie.objects.filter(movie_name__icontains=query).annotate(
             avg_rating=Avg('reviews__rating'),
@@ -360,6 +384,7 @@ def search_movies(request):
         'page_obj': page_obj,
         'movies': page_obj.object_list,
         'watchlist': watchlist,
+        'liked_movies': liked_movies,
         'search_query': query
     }
     return render(request, 'core/search_results.html', context=context)
@@ -380,5 +405,24 @@ def unlike_movie(request,movie_id:int):
     movie = get_object_or_404(Movie,id=movie_id)
     if Like.objects.filter(user=curr_user,movie=movie).exists():
         Like.objects.filter(user=curr_user,movie=movie).delete()
-        return redirect(request.META.get('HTTP_REFERER'))
+    return redirect(request.META.get('HTTP_REFERER'))
+
+
+
+@login_required
+def watched_movie(request,movie_id:int):
+    curr_user = request.user
+    movie = get_object_or_404(Movie,id=movie_id)
+    if not Watched.objects.filter(user=curr_user,movie=movie).exists():
+        Watched.objects.create(user=curr_user,movie=movie)
+    
+    return redirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def unwatch_movie(request,movie_id:int):
+    curr_user = request.user
+    movie = get_object_or_404(Movie,id=movie_id)
+    if Watched.objects.filter(user=curr_user,movie=movie).exists():
+        Watched.objects.filter(user=curr_user,movie=movie).delete()
     return redirect(request.META.get('HTTP_REFERER'))

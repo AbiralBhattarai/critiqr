@@ -17,8 +17,12 @@ urlpatterns = [
     path('movies/<int:movie_id>/',views.list_one_movie,name='list_one_movie'),
     path('movies/<int:movie_id>/review/', views.write_review, name='add_review'),
     path('review/delete/<int:review_id>/', views.delete_review, name='delete_review'),
-    path('review/edit/<int:review_id>',views.edit_review,name = 'edit_review'),
+    path('review/edit/<int:review_id>/',views.edit_review,name = 'edit_review'),
     path('follow/<str:username>/', views.follow_user, name='follow_user'),
     path('unfollow/<str:username>/', views.unfollow_user, name='unfollow_user'),
+    path('like/<int:movie_id>/',views.like_movie,name='like'),
+    path('unlike/<int:movie_id>/',views.unlike_movie,name='unlike'),
+    path('watched/<int:movie_id>/',views.watched_movie,name='watched'),
+    path('unwatch/<int:movie_id>/',views.unwatch_movie,name='unwatched'),
     path('feed/', views.feed, name='feed'),
 ]

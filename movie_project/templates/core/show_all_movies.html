@@ -35,20 +35,29 @@
                         <a href="{% url 'list_one_movie' movie_id=movie.id %}" class="btn-small" style="flex: 2;">
                             <i class="fas fa-eye"></i> View
                         </a>
+                        
+                        <!-- Like Button -->
+                        {% if user.is_authenticated %}
+                            {% if movie.id in liked_movies %}
+                                <a href="{% url 'unlike' movie_id=movie.id %}" class="btn-small" title="Unlike">
+                                    <i class="fas fa-heart"></i>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'like' movie_id=movie.id %}" class="btn-small" title="Like">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            {% endif %}
+                        {% endif %}
+
+                        <!-- Watchlist Button -->
                         {% if movie.id in watchlist %}
-                            <form method="POST" action="{% url 'remove_from_watchlist' movie_id=movie.id %}" class="watchlist-form">
-                                {% csrf_token %}
-                                <button type="submit" class="btn-small">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </form>
+                            <a href="{% url 'remove_from_watchlist' movie_id=movie.id %}" class="btn-small" title="Remove from watchlist" style="color: #6B8E23;">
+                                <i class="fas fa-minus"></i>
+                            </a>
                         {% else %}
-                            <form method="POST" action="{% url 'add_to_watchlist' movie_id=movie.id %}" class="watchlist-form">
-                                {% csrf_token %}
-                                <button type="submit" class="btn-small">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </form>
+                            <a href="{% url 'add_to_watchlist' movie_id=movie.id %}" class="btn-small" title="Add to watchlist">
+                                <i class="fas fa-plus"></i>
+                            </a>
                         {% endif %}
                     </div>
                 </div>
