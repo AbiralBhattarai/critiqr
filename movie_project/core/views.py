@@ -145,7 +145,7 @@ def add_movie(request):
                             role_type=role_type
                         )
             
-            return redirect('list_movies')
+            return redirect('get_all_movies')
     else:
         form = MovieWithCastForm()
     
@@ -426,3 +426,16 @@ def unwatch_movie(request,movie_id:int):
     if Watched.objects.filter(user=curr_user,movie=movie).exists():
         Watched.objects.filter(user=curr_user,movie=movie).delete()
     return redirect(request.META.get('HTTP_REFERER'))
+
+
+
+
+@login_required
+def liked_by_following(request,movie_id:int):
+    curr_user = request.user
+    movie = get_object_or_404(Movie, id=movie_id)
+    liked_user_ids = Like.objects.filter(movie=movie).values_list('user_id', flat=True)
+    following_users = curr_user.following.filter(following_id__in=liked_user_ids).values_list('following_id', flat=True)
+    users = get_user_model().objects.filter(id__in=following_users)
+    context = {'liked_by':users}
+    return render(request,'core/movie_liked_by_following.html',context=context)

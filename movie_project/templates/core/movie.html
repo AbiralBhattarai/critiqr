@@ -52,6 +52,9 @@
                     </div>
                 </div>
             </div>
+            <div class="like-count">
+                <span><a href="{% url 'liked_by_following' movie_id=movie.id %}">{{movie.liked_by.all | length}} <i class="fas fa-heart"></i></a></span>
+            </div>
 
             <div class="movie-description">
                 {{ movie.movie_description }}

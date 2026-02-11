@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Liked by Following - Critiqr{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/movie_liked_by_following.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="liked-by-following-container">
+    <div class="liked-by-following-header">
+        <h2>Liked by {{ liked_by|length }} people you follow</h2>
+    </div>
+
+    {% if liked_by %}
+        <div class="liked-by-list">
+            {% for user in liked_by %}
+                <a href="{% url 'view_profile' username=user.username %}" class="liked-by-item">
+                    <div class="liked-by-item-avatar">
+                        {% if user.profile.avatar_url %}
+                            <img src="{{ user.profile.avatar_url.url }}" alt="{{ user.username }}">
+                        {% else %}
+                            <div class="avatar-placeholder">{{ user.username|first|upper }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="liked-by-username">{{ user.username }}</div>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>None of your following have liked this movie yet</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
